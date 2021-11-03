@@ -2,7 +2,7 @@
 #include <ctime>
 #include <iomanip>
 #include "CLI11.hpp"
-
+int N = 4;
 void dgemm_blas(double** a, double** b, double** c)
 {
     for (int i = 0; i < N; i++) {
@@ -104,12 +104,12 @@ int main(int argc, char **argv)
     init_matrices(a, b);
 
     /* Умножение матриц */
-    dgemm_opt1(a, b, c);
-    //dgemm_blas(a, b, c);
+    //dgemm_opt1(a, b, c);
+    dgemm_blas(a, b, c);
 
-    
+
     /* Вывод результата */
-    show_matrices(a, b, c);
+    //show_matrices(a, b, c);
 
     /* Освобождение памяти */
     free_memory(a);
