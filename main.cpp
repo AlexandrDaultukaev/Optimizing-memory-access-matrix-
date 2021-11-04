@@ -1,7 +1,8 @@
+#include "CLI11.hpp"
+
 #include <iostream>
 #include <ctime>
-#include <iomanip>
-#include "CLI11.hpp"
+
 int N = 4;
 void dgemm_blas(double** a, double** b, double** c)
 {
@@ -105,7 +106,16 @@ int main(int argc, char **argv)
 
     /* Умножение матриц */
     //dgemm_opt1(a, b, c);
-    dgemm_blas(a, b, c);
+
+    unsigned int time;
+
+    time = - clock ();
+
+        dgemm_opt1 (a, b, c);
+
+    time += clock ();
+
+    printf ("%d\n", time);
 
 
     /* Вывод результата */
@@ -115,5 +125,6 @@ int main(int argc, char **argv)
     free_memory(a);
     free_memory(b);
     free_memory(c);
+
     return 0;
 }
